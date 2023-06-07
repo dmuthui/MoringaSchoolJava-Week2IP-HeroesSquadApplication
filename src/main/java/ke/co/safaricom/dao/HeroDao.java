@@ -26,7 +26,6 @@ public class HeroDao {
         try (Connection db = Database.getConnect().open()) {
             String heroes = "SELECT * FROM heroes WHERE deleted = (false)";
             allHeroes = db.createQuery(heroes).executeAndFetch(Hero.class);
-            System.out.println(allHeroes);
         } catch (Exception error) {
             System.out.println(error.getMessage());
             return allHeroes;
