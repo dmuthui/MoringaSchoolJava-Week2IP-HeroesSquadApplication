@@ -22,7 +22,7 @@ public class SquadDao {
     public static List<Squad> getAllSquads() {
         List<Squad> allSquads = null;
         try (Connection db = Database.getConnect().open()) {
-            String squads = "SELECT * FROM squads;";
+            String squads = "SELECT * FROM squads WHERE deleted = (false)";
             allSquads = db.createQuery(squads).executeAndFetch(Squad.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());
@@ -47,7 +47,7 @@ public class SquadDao {
     //DELETES A SQUAD FROM THE DATABASE
     public static void deleteSquad(String squad) {
         try (Connection db = Database.getConnect().open()) {
-            String deletedSquad = "DELETE FROM squads WHERE squad = (:squad);";
+            String deletedSquad = "UPDATE squads SET deleted = (true) WHERE squad = (:squad);";
             db.createQuery(deletedSquad).addParameter("squad", squad).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());

@@ -8,14 +8,15 @@ public class Squad {
     private String squad;
     private Integer size;
     private String cause;
+    private Boolean deleted;
 
-    public Squad(Integer squadId, String squad, Integer size, String cause) {
+    public Squad(Integer squadId, String squad, Integer size, String cause, Boolean deleted) {
         this.squadId = squadId;
         this.squad = squad;
         this.size = size;
         this.cause = cause;
+        this.deleted = deleted;
     }
-
 
     public Integer getSquadId() {
         return squadId;
@@ -30,7 +31,7 @@ public class Squad {
     }
 
     public void setSquad(String squad) {
-        this.squad = squad.toUpperCase();
+        this.squad = squad;
     }
 
     public Integer getSize() {
@@ -49,6 +50,14 @@ public class Squad {
         this.cause = cause;
     }
 
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Squad{" +
@@ -56,6 +65,7 @@ public class Squad {
                 ", squad='" + squad + '\'' +
                 ", size=" + size +
                 ", cause='" + cause + '\'' +
+                ", deleted=" + deleted +
                 '}';
     }
 }

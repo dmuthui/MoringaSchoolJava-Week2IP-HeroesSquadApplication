@@ -7,14 +7,16 @@ public class Hero {
     private String specialPower;
     private String weakness;
     private String squad;
+    private Boolean deleted;
 
-    public Hero(Integer heroId, String heroName, Integer age, String specialPower, String weakness, String squad) {
+    public Hero(Integer heroId, String heroName, Integer age, String specialPower, String weakness, String squad, Boolean deleted) {
         this.heroId = heroId;
         this.heroName = heroName;
         this.age = age;
         this.specialPower = specialPower;
         this.weakness = weakness;
         this.squad = squad;
+        this.deleted = deleted;
     }
 
 
@@ -31,7 +33,7 @@ public class Hero {
     }
 
     public void setHeroName(String heroName) {
-        this.heroName = heroName.toUpperCase();
+        this.heroName = heroName;
     }
 
     public Integer getAge() {
@@ -66,6 +68,14 @@ public class Hero {
         this.squad = squad;
     }
 
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "Hero{" +
@@ -75,6 +85,7 @@ public class Hero {
                 ", specialPower='" + specialPower + '\'' +
                 ", weakness='" + weakness + '\'' +
                 ", squad='" + squad + '\'' +
+                ", deleted=" + deleted +
                 '}';
     }
 }

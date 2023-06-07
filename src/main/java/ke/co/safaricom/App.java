@@ -56,9 +56,10 @@ public class App {
             String specialPower = request.queryParams("specialPower");
             String weakness = request.queryParams("weakness");
             String squad = "";
-            Hero additionalHero = new Hero(heroId, heroName, age, specialPower, weakness, squad);
+            Boolean deleted = false;
+            Hero additionalHero = new Hero(heroId, heroName, age, specialPower, weakness, squad, deleted);
             HeroDao.addHero(additionalHero);
-            response.redirect("/");
+            response.redirect("/hero-list");
             return null;
         });
 
@@ -89,9 +90,10 @@ public class App {
             String squad = request.queryParams("squad");
             Integer size = Integer.parseInt(request.queryParams("size"));
             String cause = request.queryParams("cause");
-            Squad addedSquad = new Squad(squadId, squad, size, cause);
+            Boolean deleted = false;
+            Squad addedSquad = new Squad(squadId, squad, size, cause, deleted);
             SquadDao.addSquad(addedSquad);
-            response.redirect("/");
+            response.redirect("/squad-list");
             return null;
         });
 

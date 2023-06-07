@@ -24,7 +24,7 @@ public class HeroDao {
         List<Hero> allHeroes = null;
 
         try (Connection db = Database.getConnect().open()) {
-            String heroes = "SELECT * FROM heroes;";
+            String heroes = "SELECT * FROM heroes WHERE deleted = (false)";
             allHeroes = db.createQuery(heroes).executeAndFetch(Hero.class);
             System.out.println(allHeroes);
         } catch (Exception error) {
@@ -70,7 +70,7 @@ public class HeroDao {
     //DELETES A HERO FROM THE HEROES DATABASE
     public static void deleteHero(String heroName){
         try(Connection db = Database.getConnect().open()){
-            String deletedHero = "DELETE FROM heroes WHERE heroName = (:heroName);";
+            String deletedHero = "UPDATE heroes SET deleted = (true) WHERE heroName = (:heroName);";
             db.createQuery(deletedHero).addParameter("heroName", heroName).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
