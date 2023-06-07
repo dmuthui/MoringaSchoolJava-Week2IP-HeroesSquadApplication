@@ -40,8 +40,8 @@ public class SquadDao {
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
-//        return squadSize.get(0).getSize();
-          return 4;
+//       return squadSize.get(0).getSize();
+         return 4;
     }
 
     //DELETES A SQUAD FROM THE DATABASE

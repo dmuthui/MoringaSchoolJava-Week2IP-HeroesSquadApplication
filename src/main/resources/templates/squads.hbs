@@ -14,9 +14,9 @@
                     {{#each squads}}
                         <li class="list-group-item">
                             <ul class="list-group">
-                                <li class="list-group-item"><strong>Name: {{squad}}</strong></li>
-                                <li class="list-group-item"><strong>Cause:</strong> {{cause}}</li>
-                                <li class="list-group-item"><strong>Size :</strong> {{size}} is the max number of heroes</li>
+                                <li class="list-group-item" type="text"><strong>Name: {{squad}}</strong></li>
+                                <li class="list-group-item" type="text"><strong>Cause:</strong> {{cause}}</li>
+                                <li class="list-group-item" type="number"><strong>Size :</strong> {{size}} is the max number of heroes</li>
                             </ul>
                             <a class="btn aqua-gradient text-white" title="assign hero"  type= "button"  href="/assign-hero/{{squad}}"><strong>Assign Hero</strong></a>
                             <a class="btn aqua-gradient text-white" title="delete squad" type= "button"   href="/delete-squad/{{squad}}"><strong>Delete</strong></a>

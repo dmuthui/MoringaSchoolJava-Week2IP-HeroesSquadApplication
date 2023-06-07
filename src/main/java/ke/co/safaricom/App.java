@@ -55,8 +55,7 @@ public class App {
             Integer age = Integer.parseInt(request.queryParams("age"));
             String specialPower = request.queryParams("specialPower");
             String weakness = request.queryParams("weakness");
-            String squad = null;
-
+            String squad = "";
             Hero additionalHero = new Hero(heroId, heroName, age, specialPower, weakness, squad);
             HeroDao.addHero(additionalHero);
             response.redirect("/");
@@ -115,7 +114,6 @@ public class App {
         //TO ROUTE TO THE SQUADHEROESFORM FOR ASSIGNING HERO TO SQUAD
         get("/assign-hero/:squad", (request, response) -> {
             String squad = request.params("squad");
-            System.out.println(squad);
             Map<String, Object> mixedList = new HashMap<>();
             if(HeroDao.heroCount(squad) < SquadDao.maxSize(squad)){
                 mixedList.put("querySquadName", squad);
@@ -128,10 +126,8 @@ public class App {
         post("/assign-hero/:squad", (req,res) -> {
             String heroName = req.queryParams("heroName");
             String squad    = req.queryParams("squad");
-            System.out.println(heroName);
-            System.out.println(squad);
             HeroDao.updateMembership(heroName, squad);
-            res.redirect("/");
+            res.redirect("/hero-to-squad");
             return null;
         }, engine);
 
