@@ -1,0 +1,136 @@
+
+.centre{
+  width: 30%;
+  height:20%;
+  margin: 0 auto;
+  justify-content:center;
+  align-items: center;
+  font-size:35px;
+  }
+
+.form-group md-form {
+      font-size: 40px;
+       }
+
+.form-container {
+      width: 50%;
+      height: 400px;
+    }
+
+}
+.h1-reponsive{
+    text-align: center;
+    }
+
+.animated{
+    height: 55%;
+}
+
+h2 {
+    text-align: center;
+ }
+
+.navbar bg-primary dark green{
+  height: 70%;
+}
+
+html,
+body,
+header,
+.view {
+  height: 88%;
+  width: 100%;
+  font-weight: bold;
+  font-size:10px;
+
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+   height: 100%;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #94d955 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #94d955 !important;
+  }
+
+}
+@media (max-width: 575px) { .navbar:not(.top-nav-collapse) {
+                             background: #94d955 !important;
+                             html,
+                               body,
+                               header,
+                               .view {
+                                 height: 100%;
+                               }
+                          }
+}
+
+
+@media (max-width: 767px) { .navbar:not(.top-nav-collapse) {
+                             background: #94d955 !important;
+                             html,
+                               body,
+                               header,
+                               .view {
+                                 height: 100%;
+                               }
+                             }
+}
+h1 {
+  letter-spacing: 8px;
+  height:20%;
+}
+
+h5 {
+  letter-spacing: 3px;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
+}
+.row{
+ padding-top:10%;
+ height:30%
+}
+.jumbotron{
+ background-color:rgba(0,0,0,0.7);
+}
+.view{
+ height: 100%;
+}
+.views{
+ height: 100%;
+}
+.viewer{
+ height: 300%;
+}
+.show{
+     height: 130%;
+}
+.delete-button {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-button-container {
+    text-align: left;
+}

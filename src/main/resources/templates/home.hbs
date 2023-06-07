@@ -1,0 +1,42 @@
+{{#partial "title"}}
+    HeroesSquad Home Page
+{{/partial}}
+
+{{#partial "content"}}
+    <div class="views" style="background-image: url('https://images3.alphacoders.com/210/210157.jpg'); background-repeat: no-repeat; background-size: cover; background-position: Cover;">
+        <div class="animated">
+            <h1 class="h1-reponsive dark blue -text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 animated wobble text-center"><strong>The Heroes Squad App<i class="fas fa-mask animated rotateIn infinite white"></i></strong></h1>
+            <div class="col-md-12 mb-4 black-text text-center">
+                <hr>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link border border-royal blue rounded" aria-current="page" href="#"><strong>Home</strong><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link border border-royal blue rounded" aria-current="/heroes"  href="/heroes"><strong>Add Heroes</strong></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link border border-royal blue rounded" aria-current="page" href="/squads"><strong>Add Squads</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/dmuthui/" class="nav-link border border-royal blue rounded" target="_blank">
+                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        </a>
+                    </li>
+                    <nav class="navbar bg-body-tertiary">
+                        <form class="d-flex" role="search">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-royal blue success" type="submit"><strong>Search</strong></button>
+                        </form>
+                    </nav>
+                </ul>
+                <a class="btn btn-outline-royal blue" type="button"   href="/hero-list"><strong>View Heroes' List</strong></a>
+                <a class="btn btn-outline-royal blue" href="/squad-list"><strong>View Squad List</strong></a>
+                <a class="btn btn-outline-royal blue" href="/hero-to-squad"><strong>View Assigned Hero-To-Squad</strong></a>
+            </div>
+        </div>
+    </div>
+
+{{/partial}}
+
+{{>layout.hbs}}

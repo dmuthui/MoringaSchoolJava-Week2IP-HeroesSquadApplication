@@ -1,0 +1,32 @@
+{{!--To serve the Squad Form--}}
+{{#partial "content"}}
+    <div class="view" style="background-image: url('https://images3.alphacoders.com/699/699230.jpg'); background-repeat: no-repeat; background-size: cover; background-position:cover;">
+        <div class="jumbotron text-center">
+            <h2 class="h2-reponsive centre text-info animated wobble"><strong>Add squad <i class="fas fa-users animate rotateIn infinite"></i></strong></h2>
+            <div class = "centre">
+                <div class = "form-group md-form">
+                    <form action="/squads" method="post">
+                        <div class="form-group md-form">
+                            <label   class="active text-white" for="squad">Squad Name</label>
+                            <input id="squad" name="squad" type="text" class="form-control text-navy blue">
+                        </div>
+                        <div class="form-group md-form">
+                            <label  class="active text-white" for="size">Squad size</label>
+                            <input id="size" name="size" type="number" class="form-control text-navy blue">
+                        </div>
+
+                        <div class="form-group md-form">
+                            <label  class="active text-white" for="cause">Squad cause</label>
+                            <input id="cause" name="cause" type="text" class="form-control text-navy blue">
+                        </div>
+
+                        <button type="submit" class="btn aqua-gradient text-white">Add Squad</button>
+                        <a type="submit" class="btn aqua-gradient text-white" href="/"><strong>Back to Home Page</strong></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

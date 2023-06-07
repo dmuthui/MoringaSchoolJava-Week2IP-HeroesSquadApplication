@@ -1,0 +1,35 @@
+{{#partial "title"}}
+    HeroList Page
+{{/partial}}
+{{#partial "content"}}
+    <div class="viewer" style="background-image:url('https://images7.alphacoders.com/699/699169.jpg'); background-repeat: no-repeat; background-size: cover; background-position: cover;">
+        <div class="jumbotron text-center">
+            <h1 class="h1-reponsive text-info">Hero list!</h1>
+            <ul>
+                <a type="submit" class="btn aqua-gradient text-white" href="/heroes"><strong>Add Heroes</strong></a>
+                <a type="submit" class="btn aqua-gradient text-white" href="/"><strong>Back to Home Page</strong></a>
+            </ul>
+            {{#if heroes}}
+                <ul class="list-group">
+                    {{#each heroes}}
+                        <li class="list-group-item">
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Name: {{heroName}}</strong></li>
+                                <li class="list-group-item"><strong>Age:</strong> <span>{{age}}-years old</span></li>
+                                <li class="list-group-item"><strong>Powers:</strong> {{specialPower}}</li>
+                                <li class="list-group-item"><strong>Weaknesses:</strong> {{weakness}}</li>
+                            </ul>
+{{!--                            <!-- Button to delete the hero -->--}}
+                            <a class="btn btn-danger delete-btn" type="button"  href="/delete-hero/{{heroName}}"><strong>Delete</strong></a>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{else}}
+                <h4 class="h4-reponsive text-info animate fadeIn"><strong>No Hero Added!</strong></h4>
+            {{/if}}
+        </div>
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}

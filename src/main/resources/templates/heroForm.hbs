@@ -1,0 +1,35 @@
+{{!--To serve the Hero Form--}}
+{{#partial "content"}}
+    <div class="view" style="background-image: url(https://images4.alphacoders.com/699/699171.jpg); background-repeat: no-repeat; background-size: cover; background-position: cover;">
+        <div class="jumbotron text-center">
+            <h2 class="h2-reponsive center text-info animated wobble "><strong>Add New Hero <i class="fas fa-users animate rotateIn infinite"></i></strong>
+            </h2>
+            <div class = "centre">
+                <form action="/heroes" method="post">
+                    <div class="form-group md-form">
+                        <label class="active text-white"  for="heroName"><strong>Hero's Name</strong></label>
+                        <input id="heroName" name="heroName" class="form-control text-navy blue" type="text">
+                    </div>
+
+                    <div class="form-group md-form">
+                        <label class="active text-white"  for="age"> <strong>Hero's Age</strong> </label>
+                        <input id="age" name="age" class="form-control text-navy blue" type="number">
+                    </div>
+
+                    <div class="form-group md-form">
+                        <label class="active text-white"  for="specialPower"><strong>Hero's Special Power</strong></label>
+                        <input id="specialPower" name="specialPower" class="form-control text-navy blue" type="text">
+                    </div>
+
+                    <div class="form-group md-form">
+                        <label class="active text-white"  for="weakness"><strong>Hero's Weakness</strong></label><input id="weakness" name="weakness" class="form-control text-navy blue" type="text">
+                    </div>
+                    <button type="submit" class="btn aqua-gradient text-white">Add hero</button>
+                    <a class="btn btn-outline-royal blue" href="/"><strong>Back to Home Page</strong></a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{{/partial}}
+{{> layout.hbs}}
