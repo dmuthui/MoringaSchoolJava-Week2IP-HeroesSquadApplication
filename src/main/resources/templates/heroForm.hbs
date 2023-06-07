@@ -1,3 +1,6 @@
+{{#partial "title"}}
+    Hero Data Entry Page
+{{/partial}}
 {{!--To serve the Hero Form--}}
 {{#partial "content"}}
     <div class="view" style="background-image: url(https://images4.alphacoders.com/699/699171.jpg); background-repeat: no-repeat; background-size: cover; background-position: cover;">
@@ -24,7 +27,7 @@
                     <div class="form-group md-form">
                         <label class="active text-white"  for="weakness"><strong>Hero's Weakness</strong></label><input id="weakness" name="weakness" class="form-control text-navy blue" type="text">
                     </div>
-                    <button type="submit" class="btn aqua-gradient text-white">Add hero</button>
+                    <button type="submit" onclick="return validateForm()" class="btn aqua-gradient text-white">Add hero</button>
                     <a class="btn btn-outline-royal blue" href="/"><strong>Back to Home Page</strong></a>
                 </form>
             </div>
