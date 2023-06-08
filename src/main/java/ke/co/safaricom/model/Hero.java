@@ -9,6 +9,7 @@ public class Hero {
     private String squad;
     private Boolean deleted = false;
 
+
     public Hero(Integer heroId, String heroName, Integer age, String specialPower, String weakness, String squad, Boolean deleted) {
         this.heroId = heroId;
         this.heroName = heroName;
@@ -17,6 +18,14 @@ public class Hero {
         this.weakness = weakness;
         this.squad = squad;
         this.deleted = deleted;
+    }
+
+    public Integer getHeroId() {
+        return heroId;
+    }
+
+    public void setHeroId(Integer heroId) {
+        this.heroId = heroId;
     }
 
     public String getHeroName() {
