@@ -1,5 +1,6 @@
 # Heroes Squad App Using Java Spark Program
-# https://images3.alphacoders.com/210/210157.jpg
+## The Cover Image of the Project
+## https://images3.alphacoders.com/210/210157.jpg
 
 #### This project is about Hero Squad App Using Java Program, Version:11.0.17 LTS Date: 12th May 2023.
 
