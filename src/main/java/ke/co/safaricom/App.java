@@ -128,12 +128,9 @@ public class App {
 
         // GETTING THE PAGE OF HEROES ASSIGNED TO A SQUAD IN THE VIEW ASSIGNED HERO TO SQUAD
         get("/hero-to-squad", (req, res) -> {
-            String squad = req.queryParams("squad"); // Get the squad parameter from the query
-            Squad squadDetails = SquadDao.getAllSquads().get(0);
-            List<Hero> assignedHeroes = HeroDao.getAllHeroes();
+            List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
             Map<String, Object> model = new HashMap<>();
-            model.put("squadDetails", squadDetails);
-            model.put("assignedHeroes", assignedHeroes);
+            model.put("squads", squads);
             return new ModelAndView(model, "heroToSquad.hbs");
         }, engine);
 
@@ -143,8 +140,12 @@ public class App {
             String heroName = req.queryParams("heroName");
             String squad = req.params("squad");
             HeroDao.updateMembership(heroName, squad);
-            res.redirect("/hero-to-squad?heroName=" + heroName + "&squad=" + squad);
-            return null;
+            List<Hero> assignedHeroes = HeroDao.getHeroesBySquad(squad); // Get the assigned heroes for the squad
+            List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
+            Map<String, Object> model = new HashMap<>();
+            model.put("assignedHeroes", assignedHeroes);
+            model.put("squads", squads);
+            return new ModelAndView(model, "heroToSquad.hbs");
         }, engine);
 
 

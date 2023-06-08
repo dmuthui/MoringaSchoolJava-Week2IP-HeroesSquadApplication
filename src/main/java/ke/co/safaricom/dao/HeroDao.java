@@ -5,6 +5,7 @@ import ke.co.safaricom.model.Hero;
 import ke.co.safaricom.config.Database;
 import org.sql2o.Connection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HeroDao {
@@ -33,6 +34,21 @@ public class HeroDao {
         return allHeroes;
 
     }
+    //RETRIEVES A LIST OF ALL THE HEROES FROM THE HEROES DATABASE ASSIGNED TO A SPECIFIC SQUAD
+    public static List<Hero> getHeroesBySquad(String squad) {
+        List<Hero> assignedHeroes = new ArrayList<>();
+        try (Connection db = Database.getConnect().open()) {
+            String query = "SELECT * FROM heroes WHERE squad = :squad AND deleted = false";
+            assignedHeroes = db.createQuery(query)
+                    .addParameter("squad", squad)
+                    .executeAndFetch(Hero.class);
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
+        }
+
+        return assignedHeroes;
+    }
+
     //CONFIRMS THE NUMBER OF HEROES IN A SQUAD
     public static Integer heroCount(String squad) {
         Integer heroesInSquad = null;
