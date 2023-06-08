@@ -24,7 +24,7 @@
                         <td>{{ squadDetails.size }}</td>
                         <td>{{ squadDetails.cause }}</td>
                         <td>
-                            <form action="/delete-squad/{{squadName}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this squad?')">
+                            <form action="/delete-squad/{{squad}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this squad?')">
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
@@ -60,6 +60,7 @@
             </div>
         </div>
     </div>
+{{!--    // THIS CODE ALLOWS THE ASSIGN HERO-TO-SQUAD NOT TO THROW AN EXCEPTION OF UNMAP ROUTE--}}
     <script>
     document.getElementById('squadForm').addEventListener('submit', function(e) {
         e.preventDefault(); // Prevent form submission

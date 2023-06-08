@@ -135,7 +135,7 @@ public class App {
             model.put("squadDetails", squadDetails);
             model.put("assignedHeroes", assignedHeroes);
             return new ModelAndView(model, "heroToSquad.hbs");
-        }, new HandlebarsTemplateEngine());
+        }, engine);
 
 
         // ROUTE TO SERVE ASSIGN A HERO TO A SQUAD
@@ -166,9 +166,9 @@ public class App {
         });
 
         // Define the route for deleting a Squad on the View Assigned Hero to Squad
-        post("/delete-squad/:squadName", (req, res) -> {
-            String squadName = req.params("squadName");
-            SquadDao.deleteSquad(squadName);
+        post("/delete-squad/:squad", (req, res) -> {
+            String squad = req.params("squad");
+            SquadDao.deleteSquad(squad);
             res.redirect("/hero-to-squad");
             return null;
         });
