@@ -166,9 +166,9 @@ public class App {
         });
 
         // Define the route for deleting a Squad on the View Assigned Hero to Squad
-        post("/delete-squad/:squad", (req, res) -> {
-            String squad = req.params("squad");
-            SquadDao.deleteSquad(squad);
+        post("/delete-squad/:squadName", (req, res) -> {
+            String squadName = req.params("squadName");
+            SquadDao.deleteSquad(squadName);
             res.redirect("/hero-to-squad");
             return null;
         });
