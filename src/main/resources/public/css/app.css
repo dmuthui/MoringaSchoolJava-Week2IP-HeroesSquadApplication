@@ -134,3 +134,16 @@ h5 {
 .delete-button-container {
     text-align: left;
 }
+.fancy-button {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.fancy-button:hover {
+  opacity: 0.8;
+}

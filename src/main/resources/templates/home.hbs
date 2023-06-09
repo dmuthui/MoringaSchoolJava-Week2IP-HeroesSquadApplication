@@ -10,30 +10,51 @@
                 <hr>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link border border-royal blue rounded" aria-current="page" href="#"><strong>Home</strong><span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link border border-royal blue rounded" onclick="return validateForm()" aria-current="/heroes"  href="/heroes"><strong>Add Heroes</strong></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link border border-royal blue rounded" onclick="return validatesForm()" aria-current="page" href="/squads"><strong>Add Squads</strong></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://github.com/dmuthui/" class="nav-link border border-royal blue rounded" target="_blank">
-                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        <a type="submit" class="btn fancy-button btn-lg" href="/">
+                            <strong>HOME PAGE</strong>
+                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <nav class="navbar bg-body-tertiary">
-                        <form class="d-flex" role="search">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-royal blue success" type="submit"><strong>Search</strong></button>
-                        </form>
-                    </nav>
+                    <li class="nav-item active">
+                        <a type="submit" class="btn fancy-button btn-lg" href="/heroes">
+                            <strong>ADD HERO</strong>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a type="submit" class="btn fancy-button btn-lg" href="/squads">
+                            <strong>ADD SQUAD</strong>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a type="submit" class="btn fancy-button btn-lg" href="https://github.com/dmuthui/" target="_blank">
+                            <strong>GITHUB</strong>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
                 </ul>
-                <a class="btn btn-outline-royal blue" type="button"   href="/hero-list"><strong>View Heroes' List</strong></a>
-                <a class="btn btn-outline-royal blue" href="/squad-list"><strong>View Squad List</strong></a>
-                <a class="btn btn-outline-royal blue" href="/hero-to-squad"><strong>View Assigned Hero-To-Squad</strong></a>
+                <a href="/hero-list" class="btn btn-lg btn-primary fancy-button">
+                    <strong>ADD / VIEW HEROES' LIST</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+
+                <a href="/squad-list" class="btn btn-lg btn-primary fancy-button">
+                    <strong>ADD / VIEW SQUADS' LIST</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+
+                <a href="/hero-to-squad" class="btn btn-lg btn-primary fancy-button">
+                    <strong>VIEW ASSIGNED HEROES-TO-SQUAD</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+
+                <a href="/" class="btn btn-lg btn-primary fancy-button">
+                    <strong>SEARCH</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
             </div>
+
         </div>
     </div>
 
