@@ -150,7 +150,7 @@ public class App {
 
 
 
-        // ROUTE TO DISPLAY FULL SQUAD
+        // ROUTE TO DISPLAY FULL SQUAD WHEN A SQUAD MEETS A MAXIMUM SIZE
         get("/fullSquad", (request, response) -> {
             Map<String, Object> squadData = new HashMap<>();
             squadData.put("squads", SquadDao.getAllSquads());
@@ -166,12 +166,5 @@ public class App {
             return null;
         });
 
-        // Define the route for deleting a Squad on the View Assigned Hero to Squad
-        post("/delete-squad/:squad", (req, res) -> {
-            String squad = req.params("squad");
-            SquadDao.deleteSquad(squad);
-            res.redirect("/hero-to-squad");
-            return null;
-        });
     }
 }

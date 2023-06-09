@@ -4,7 +4,9 @@
 {{#partial "content"}}
     <div class="viewer" style="background-image: url('https://wallpapertag.com/wallpaper/full/b/a/2/784583-gorgerous-marvel-heroes-wallpapers-2560x1600.jpg');background-repeat: no-repeat; background-size: cover; background-position: cover;">
         <div class="jumbotron text-center bg-light">
-            <h2 class="h2-responsive light center text-Royal blue animated wobble"><strong>HERO TO SQUAD <i class="fas fa-users animate rotateIn infinite"></i></strong></h2>
+            <h2 class="h2-responsive light center text-Royal blue animated wobble">
+                <strong>HERO TO SQUAD <i class="fas fa-users animate rotateIn infinite"></i></strong>
+            </h2>
             <div class="form-group md-form">
                 <a class="btn btn-outline-royal blue" href="/"><strong>Back to Home Page</strong></a>
             </div>
@@ -24,8 +26,7 @@
                             <td>{{ this.squad }}</td>
                             <td>{{ this.size }}</td>
                             <td>{{ this.cause }}</td>
-                            <td>
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td colspan="4">
@@ -37,23 +38,23 @@
                                         <th class="text-info">Special Power</th>
                                         <th class="text-info">Weakness</th>
                                         <th class="text-info">Squad</th>
-                                        <th></th> <!-- Delete button column for hero -->
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {{#each assignedHeroes}}
-                                        <tr>
-                                            <td>{{ this.heroName }}</td>
-                                            <td>{{ this.age }}</td>
-                                            <td>{{ this.specialPower }}</td>
-                                            <td>{{ this.weakness }}</td>
-                                            <td>{{ this.squad }}</td>
-                                            <td>
-                                                <form action="/delete-hero/{{ this.heroName }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this hero?')">
-                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ this.heroName }}</td>
+                                                <td>{{ this.age }}</td>
+                                                <td>{{ this.specialPower }}</td>
+                                                <td>{{ this.weakness }}</td>
+                                                <td>{{ this.squad }}</td>
+                                                <td>
+                                                    <form action="/delete-hero/{{ this.heroName }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this hero?')">
+                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                     {{/each}}
                                     </tbody>
                                 </table>
@@ -80,6 +81,7 @@
         document.getElementById('squadForm').submit();
     });
 </script>
+
 
 {{/partial}}
 

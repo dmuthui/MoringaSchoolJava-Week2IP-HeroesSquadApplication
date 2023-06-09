@@ -38,7 +38,7 @@ public class HeroDao {
     public static List<Hero> getHeroesBySquad(String squad) {
         List<Hero> assignedHeroes = new ArrayList<>();
         try (Connection db = Database.getConnect().open()) {
-            String query = "SELECT * FROM heroes WHERE squad = :squad AND deleted = false";
+            String query = "SELECT * FROM heroes WHERE squad = (:squad) AND deleted = (false)";
             assignedHeroes = db.createQuery(query)
                     .addParameter("squad", squad)
                     .executeAndFetch(Hero.class);
