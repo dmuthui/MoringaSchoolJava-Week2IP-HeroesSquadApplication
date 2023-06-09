@@ -10,6 +10,7 @@ function validateForm() {
         return false; // Prevent form submission
     }
 }
+
 //VALIDATES SQUADFORM DATA ENTRY:SENDS ALERT WHEN THERE IS DUPLICATE SQUAD AND AVOIDS CLICKING BLANK FORM FOR SUBMISSION
  function validatesForm() {
  var squad = document.getElementById("squad").value;
