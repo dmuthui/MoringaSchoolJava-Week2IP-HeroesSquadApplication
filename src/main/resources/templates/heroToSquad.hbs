@@ -42,7 +42,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{#each assignedHeroes}}
+                                    {{#each this.assignedHeroes}}
                                             <tr>
                                                 <td>{{ this.heroName }}</td>
                                                 <td>{{ this.age }}</td>
@@ -66,23 +66,6 @@
             </div>
         </div>
     </div>
-{{!--    // THIS CODE ALLOWS THE ASSIGN HERO-TO-SQUAD NOT TO THROW AN EXCEPTION OF UNMAP ROUTE--}}
-    <script>
-    document.getElementById('squadForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent form submission
-
-        var squad = document.getElementById('squad').value;
-        var heroName = document.getElementById('heroName').value;
-
-        var formAction = '/assign-hero/' + encodeURIComponent(squad);
-        document.getElementById('squadForm').action = formAction;
-
-        // Submit the form
-        document.getElementById('squadForm').submit();
-    });
-</script>
-
-
 {{/partial}}
 
 {{> layout.hbs}}
