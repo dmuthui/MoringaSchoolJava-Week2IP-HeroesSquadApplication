@@ -129,6 +129,7 @@ public class App {
         // GETTING THE PAGE OF HEROES ASSIGNED TO A SQUAD IN THE VIEW ASSIGNED HERO TO SQUAD
         get("/hero-to-squad", (req, res) -> {
             List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
+            List<Hero> heroes = HeroDao.getAllHeroes();
             Map<String, Object> model = new HashMap<>();
             model.put("squads", squads);
             return new ModelAndView(model, "heroToSquad.hbs");
@@ -143,8 +144,8 @@ public class App {
             List<Hero> assignedHeroes = HeroDao.getHeroesBySquad(squad); // Get the assigned heroes for the squad
             List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
             Map<String, Object> model = new HashMap<>();
-            model.put("assignedHeroes", assignedHeroes);
             model.put("squads", squads);
+            model.put("assignedHeroes", HeroDao.getHeroesBySquad(squad));
             return new ModelAndView(model, "heroToSquad.hbs");
         }, engine);
 
