@@ -119,7 +119,7 @@ public class App {
             return null;
         }, engine);
 
-        // TO ROUTE TO THE SQUADHEROESFORM FOR ASSIGNING HERO TO SQUAD UPTO MAX SIZE
+        // THE ROUTE TO SERVE SQUADHEROESFORM FOR ASSIGNING HERO TO SQUAD UPTO MAX SIZE
         get("/assign-hero/:squad", (request, response) -> {
             String squad = request.params("squad");
             Map<String, Object> mixedList = new HashMap<>();
@@ -132,7 +132,15 @@ public class App {
             return new ModelAndView(mixedList, "squadHeroesForm.hbs");
         }, engine);
 
-        // ROUTE TO SERVE RETRIEVING ALL THE ASSIGNED HEROES TO A SQUAD FROM DATABASE
+        // ROUTE TO DISPLAY FULL SQUAD WHEN A SQUAD MEETS A MAXIMUM SIZE
+        get("/fullSquad", (request, response) -> {
+            Map<String, Object> squadData = new HashMap<>();
+            squadData.put("squads", SquadDao.getAllSquads());
+            squadData.put("heroes", HeroDao.getAllHeroes());
+            return new ModelAndView(squadData, "fullSquad.hbs");
+        }, engine);
+
+        // ROUTE TO SERVE POSTING ALL THE HEROES ASSIGNED TO A SQUAD TO THE DATABASE
         post("/assign-hero/:squad", (req, res) -> {
             String heroName = req.queryParams("heroName");
             String squad = req.queryParams("squad");
@@ -146,7 +154,7 @@ public class App {
         }, engine);
 
         // GETTING THE PAGE OF HEROES ASSIGNED TO A SQUAD IN THE VIEW NEASSIGD HERO TO SQUAD
-        get("/hero-to-squad", (req, res) -> {
+        get("/hero-to-squad/", (req, res) -> {
             List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
             // Retrieve the squad parameter from the query string
             String squad = req.queryParams("squad");
@@ -160,15 +168,6 @@ public class App {
             model.put("squads", squads);
             model.put("assignedHeroes", assignedHeroes); // Add assignedHeroes to the model
             return new ModelAndView(model, "heroToSquad.hbs");
-        }, engine);
-
-
-        // ROUTE TO DISPLAY FULL SQUAD WHEN A SQUAD MEETS A MAXIMUM SIZE
-        get("/fullSquad", (request, response) -> {
-            Map<String, Object> squadData = new HashMap<>();
-            squadData.put("squads", SquadDao.getAllSquads());
-            squadData.put("heroes", HeroDao.getAllHeroes());
-            return new ModelAndView(squadData, "fullSquad.hbs");
         }, engine);
 
     }
