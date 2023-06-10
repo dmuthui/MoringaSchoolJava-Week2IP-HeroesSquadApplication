@@ -23,7 +23,6 @@ public class HeroDao {
     //RETRIEVES A LIST OF ALL THE HEROES FROM THE HEROES DATABASE
     public static List<Hero> getAllHeroes(){
         List<Hero> allHeroes = null;
-
         try (Connection db = Database.getConnect().open()) {
             String heroes = "SELECT * FROM heroes WHERE deleted = (false)";
             allHeroes = db.createQuery(heroes).executeAndFetch(Hero.class);
@@ -36,16 +35,15 @@ public class HeroDao {
     }
     //RETRIEVES A LIST OF ALL THE HEROES FROM THE HEROES DATABASE ASSIGNED TO A SPECIFIC SQUAD
     public static List<Hero> getHeroesBySquad(String squad) {
-        List<Hero> assignedHeroes = new ArrayList<>();
+        List<Hero> assignedHeroes = null;
         try (Connection db = Database.getConnect().open()) {
-            String query = "SELECT * FROM heroes WHERE squad = (:squad) AND deleted = (false)";
-            assignedHeroes = db.createQuery(query)
+            String heroesQuery = "SELECT * FROM heroes WHERE squad = (:squad) AND deleted = (false)";
+            assignedHeroes = db.createQuery(heroesQuery)
                     .addParameter("squad", squad)
                     .executeAndFetch(Hero.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
-
         return assignedHeroes;
     }
 

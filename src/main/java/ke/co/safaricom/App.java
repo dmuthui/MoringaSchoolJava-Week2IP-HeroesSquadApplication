@@ -97,7 +97,6 @@ public class App {
             return null;
         });
 
-
         // GETTING ALL SQUADS SHOWING ALL SQUADS DETAILS FROM DATABASE ON VIEW SQUAD LIST
         get("/squad-list", (req,res) -> {
             Map<String, List<Squad>> squadList = new HashMap<>();
@@ -128,22 +127,18 @@ public class App {
 
         // GETTING THE PAGE OF HEROES ASSIGNED TO A SQUAD IN THE VIEW ASSIGNED HERO TO SQUAD
         get("/hero-to-squad", (req, res) -> {
-            String heroName = req.queryParams("heroName");
-            String squad = req.params("squad");
-            HeroDao.updateMembership(heroName, squad);
             List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
-            List<Hero> assignedHeroes = HeroDao.getHeroesBySquad(squad); // Get the assigned heroes for the squad
+            List<Hero> heroes = HeroDao.getAllHeroes();
             Map<String, Object> model = new HashMap<>();
             model.put("squads", squads);
-            model.put("assignedHeroes", assignedHeroes);
             return new ModelAndView(model, "heroToSquad.hbs");
         }, engine);
 
 
-        // ROUTE TO SERVE ASSIGN A HERO TO A SQUAD
+        // ROUTE TO SERVE RETRIEVING ALL THE ASSIGNED HEROES TO A SQUAD FROM DATABASE
         post("/assign-hero/:squad", (req, res) -> {
             String heroName = req.queryParams("heroName");
-            String squad = req.params("squad");
+            String squad = req.queryParams("squad");
             HeroDao.updateMembership(heroName, squad);
             List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
             List<Hero> assignedHeroes = HeroDao.getHeroesBySquad(squad); // Get the assigned heroes for the squad
