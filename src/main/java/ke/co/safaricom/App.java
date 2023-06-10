@@ -9,6 +9,7 @@ import org.sql2o.Connection;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,23 +23,10 @@ public class App {
 
         //INITIALIZATION OF THE HANDLEBARS
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-//        HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine("/templates");
 
         //THE ROUTE TO VIEW HOME PAGE
         get("/", (request, response) -> {
-            List<Hero> allHeroes = null;
-            List<Squad> allSquads = null;
-            try (Connection db = Database.getConnect().open()) {
-                String heroes = "SELECT * FROM heroes;";
-                String squads = "SELECT * FROM squads";
-                allHeroes = db.createQuery(heroes).executeAndFetch(Hero.class);
-                allSquads = db.createQuery(squads).executeAndFetch(Squad.class);
-            } catch (Exception error) {
-                System.out.println(error.getMessage());
-            }
             Map<String, Object> heroSquadList = new HashMap<>();
-            heroSquadList.put("hero", allHeroes);
-            heroSquadList.put("squad", allSquads);
             return new ModelAndView(new HashMap<>(), "home.hbs");
         }, engine);
 
@@ -59,9 +47,14 @@ public class App {
             Boolean deleted = false;
             Hero additionalHero = new Hero(heroId, heroName, age, specialPower, weakness, squad, deleted);
             HeroDao.addHero(additionalHero);
-            response.redirect("/hero-list");
+            response.redirect("/heroSuccess");
             return null;
         });
+        // ROUTE TO DISPLAY HERO SUCCESS AFTER ADDING A HERO
+        get("/heroSuccess", (request, response) -> {
+            Map<String, Object> heroSuccess = new HashMap<>();
+            return new ModelAndView(heroSuccess, "heroSuccess.hbs");
+        }, engine);
 
         // THE ROUTE TO HANDLE GETTING ALL HEROES FROM DATABASE ON THE VIEW HEROES LIST
         get("/hero-list", (req,res) -> {
@@ -70,7 +63,7 @@ public class App {
             return new ModelAndView(heroList, "heroes.hbs");
         },engine);
 
-        //DELETING A HERO FROM THE PAGE
+        //DELETING A HERO FROM THE HEROLIST PAGE
        get("/delete-hero/:heroName", (req,res)-> {
             String heroName = req.params(":heroName");
             HeroDao.deleteHero(heroName);
@@ -78,10 +71,19 @@ public class App {
             return null;
         }, engine);
 
+        // DEFINES THE ROUTE FOR DELETING A HERO FROM THE VIEW ASSIGNED HERO TO SQUAD
+        post("/delete-hero/:heroName", (req, res) -> {
+            String heroName = req.params("heroName");
+            HeroDao.deleteHero(heroName);
+            res.redirect("/hero-to-squad");
+            return null;
+        });
+
         //THE ROUTE TO ADD SQUADFORM FOR DATA ENTRY TO ADD A NEW SQUAD
         get("/squads", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "squadForm.hbs");
         }, engine);
+
 
         //TO POST THE SQUAD ADDED ON THE SQUADFORM TO THE DATABASE
         post("/squads", (request, response) -> {
@@ -93,9 +95,14 @@ public class App {
             Boolean deleted = false;
             Squad addedSquad = new Squad(squadId, squad, size, cause, deleted);
             SquadDao.addSquad(addedSquad);
-            response.redirect("/squad-list");
+            response.redirect("/squadSuccess");
             return null;
         });
+        // ROUTE TO DISPLAY SQUAD SUCCESS AFTER ADDING A SQUAD
+        get("/squadSuccess", (request, response) -> {
+            Map<String, Object> squadSuccess = new HashMap<>();
+            return new ModelAndView(squadSuccess, "squadSuccess.hbs");
+        }, engine);
 
         // GETTING ALL SQUADS SHOWING ALL SQUADS DETAILS FROM DATABASE ON VIEW SQUAD LIST
         get("/squad-list", (req,res) -> {
@@ -125,16 +132,6 @@ public class App {
             return new ModelAndView(mixedList, "squadHeroesForm.hbs");
         }, engine);
 
-        // GETTING THE PAGE OF HEROES ASSIGNED TO A SQUAD IN THE VIEW ASSIGNED HERO TO SQUAD
-        get("/hero-to-squad", (req, res) -> {
-            List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
-            List<Hero> heroes = HeroDao.getAllHeroes();
-            Map<String, Object> model = new HashMap<>();
-            model.put("squads", squads);
-            return new ModelAndView(model, "heroToSquad.hbs");
-        }, engine);
-
-
         // ROUTE TO SERVE RETRIEVING ALL THE ASSIGNED HEROES TO A SQUAD FROM DATABASE
         post("/assign-hero/:squad", (req, res) -> {
             String heroName = req.queryParams("heroName");
@@ -142,6 +139,23 @@ public class App {
             HeroDao.updateMembership(heroName, squad);
             List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
             List<Hero> assignedHeroes = HeroDao.getHeroesBySquad(squad); // Get the assigned heroes for the squad
+            Map<String, Object> model = new HashMap<>();
+            model.put("squads", squads);
+            model.put("assignedHeroes", assignedHeroes); // Add assignedHeroes to the model
+            return new ModelAndView(model, "heroToSquad.hbs");
+        }, engine);
+
+        // GETTING THE PAGE OF HEROES ASSIGNED TO A SQUAD IN THE VIEW NEASSIGD HERO TO SQUAD
+        get("/hero-to-squad", (req, res) -> {
+            List<Squad> squads = SquadDao.getAllSquads(); // Get all squads
+            // Retrieve the squad parameter from the query string
+            String squad = req.queryParams("squad");
+            List<Hero> assignedHeroes;
+            if (squad != null && !squad.isEmpty()) {
+                assignedHeroes = HeroDao.getHeroesBySquad(squad); // Get the assigned heroes for the squad
+            } else {
+                assignedHeroes = new ArrayList<>(); // No squad parameter provided, initialize an empty list
+            }
             Map<String, Object> model = new HashMap<>();
             model.put("squads", squads);
             model.put("assignedHeroes", assignedHeroes); // Add assignedHeroes to the model
@@ -156,14 +170,6 @@ public class App {
             squadData.put("heroes", HeroDao.getAllHeroes());
             return new ModelAndView(squadData, "fullSquad.hbs");
         }, engine);
-
-        // Define the route for deleting a hero on the View Assigned Hero to Squad
-        post("/delete-hero/:heroName", (req, res) -> {
-            String heroName = req.params("heroName");
-            HeroDao.deleteHero(heroName);
-            res.redirect("/hero-to-squad");
-            return null;
-        });
 
     }
 }
