@@ -2,9 +2,11 @@
     Hero To Squad Page
 {{/partial}}
 {{#partial "content"}}
-    <div class="viewer" style="background-image: url('https://wallpapertag.com/wallpaper/full/b/a/2/784583-gorgerous-marvel-heroes-wallpapers-2560x1600.jpg');background-repeat: no-repeat; background-size: cover; background-position: cover;">
+    <div class="viewer" style="background-image: url('https://wallpapertag.com/wallpaper/full/b/a/2/784583-gorgerous-marvel-heroes-wallpapers-2560x1600.jpg'); background-repeat: no-repeat; background-size: cover; background-position: cover;">
         <div class="jumbotron text-center">
-            <h2 class="h2-reponsive center text-info animated wobble "><strong>HEROES ASSIGNED TO A SQUAD PAGE!<i class="fas fa-users animate rotateIn infinite"></i></strong></h2>
+            <h2 class="h2-reponsive center text-info animated wobble">
+                <strong>HEROES ASSIGNED TO A SQUAD PAGE!<i class="fas fa-users animate rotateIn infinite"></i></strong>
+            </h2>
             <div class="form-group md-form">
                 <a type="submit" class="btn aqua-gradient text-white" href="/"><strong>HOME PAGE</strong></a>
                 <a type="submit" class="btn aqua-gradient text-white" href="/hero-list"><strong>VIEW HEROES</strong></a>
@@ -23,9 +25,9 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{ this.squad }}</td>
-                            <td>{{ this.size }}</td>
-                            <td>{{ this.cause }}</td>
+                            <td>{{squad}}</td>
+                            <td>{{size}}</td>
+                            <td>{{cause}}</td>
                             <td></td>
                         </tr>
                         <tr>
@@ -42,19 +44,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{#each this.assignedHeroes}}
-                                            <tr>
-                                                <td>{{ this.heroName }}</td>
-                                                <td>{{ this.age }}</td>
-                                                <td>{{ this.specialPower }}</td>
-                                                <td>{{ this.weakness }}</td>
-                                                <td>{{ this.squad }}</td>
-                                                <td>
-                                                    <form action="/delete-hero/{{ this.heroName }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this hero?')">
-                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
+                                    {{#each assignedHeroes}}
+                                        <tr>
+                                            <td>{{heroName}}</td>
+                                            <td>{{age}}</td>
+                                            <td>{{specialPower}}</td>
+                                            <td>{{weakness}}</td>
+                                            <td>{{squad}}</td>
+                                            <td>
+                                                <div>
+                                                    <a class="btn btn-danger" href="/remove-hero/{{ heroName }}" title="remove hero">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     {{/each}}
                                     </tbody>
                                 </table>
@@ -66,8 +70,6 @@
             </div>
         </div>
     </div>
-
-
 {{/partial}}
 
 {{> layout.hbs}}

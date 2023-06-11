@@ -9,6 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeroDao {
+    //THIS CODE CREATES THE HEROES TABLE AUTOMATICALLY ON THE DATABASE ON STARTING THE APP.
+    public static void getStarted (){
+
+        try(Connection db = Database.getConnect().open()){
+            String createTable = "CREATE TABLE IF NOT EXISTS heroes (heroId SERIAL, heroName varchar unique, age integer, specialPower varchar, weakness varchar, squad varchar, deleted boolean default false);";
+            db.createQuery(createTable).executeUpdate();
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
+        }
+    }
     //ADDS A HERO INTO THE DATABASE
     public static void addHero (Hero additionalHero) {
         try (Connection db = Database.getConnect().open()) {
@@ -33,6 +43,8 @@ public class HeroDao {
         return allHeroes;
 
     }
+
+
     //RETRIEVES A LIST OF ALL THE HEROES FROM THE HEROES DATABASE ASSIGNED TO A SPECIFIC SQUAD
     public static List<Hero> getHeroesBySquad(String squad) {
         List<Hero> assignedHeroes = null;
@@ -41,6 +53,7 @@ public class HeroDao {
             assignedHeroes = db.createQuery(heroesQuery)
                     .addParameter("squad", squad)
                     .executeAndFetch(Hero.class);
+            System.out.println(assignedHeroes);
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
@@ -88,5 +101,13 @@ public class HeroDao {
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
+    }
+
+    //REMOVE A HERO FROM A SQUAD
+    public static void removeHero (String heroName) {
+        try(Connection db = Database.getConnect().open()){
+            String heroUpdate = "UPDATE heroes SET squad = null WHERE heroName = (:heroName)";
+            db.createQuery(heroUpdate).addParameter("heroName", heroName).executeUpdate();
+        } catch (Exception error) { System.out.println(error.getMessage());}
     }
 }
