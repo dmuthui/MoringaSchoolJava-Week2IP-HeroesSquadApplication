@@ -35,7 +35,6 @@ public class SquadDao {
             viewedSquads = db.createQuery(squadsQuery)
                     .addParameter("squad", squad)
                     .executeAndFetch(Squad.class);
-            System.out.println(viewedSquads);
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }

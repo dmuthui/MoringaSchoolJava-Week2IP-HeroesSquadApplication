@@ -34,7 +34,7 @@ public class HeroDao {
     public static List<Hero> getAllHeroes(){
         List<Hero> allHeroes = null;
         try (Connection db = Database.getConnect().open()) {
-            String heroes = "SELECT * FROM heroes WHERE deleted = (false)";
+            String heroes = "SELECT * FROM heroes WHERE deleted = false";
             allHeroes = db.createQuery(heroes).executeAndFetch(Hero.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());
@@ -53,7 +53,6 @@ public class HeroDao {
             assignedHeroes = db.createQuery(heroesQuery)
                     .addParameter("squad", squad)
                     .executeAndFetch(Hero.class);
-            System.out.println(assignedHeroes);
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
@@ -65,7 +64,7 @@ public class HeroDao {
         Integer heroesInSquad = null;
         try (Connection db = Database.getConnect().open()) {
             //CHECKS THE NUMBER OF HEROES IN THE PARAM SQUAD
-            String heroCounter = "SELECT COUNT(*) FROM heroes WHERE squad = (:squad)";
+            String heroCounter = "SELECT COUNT(*) FROM heroes WHERE squad = (:squad) AND deleted = false";
             heroesInSquad = db.createQuery(heroCounter).addParameter("squad", squad).executeScalar(Integer.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());
@@ -75,7 +74,7 @@ public class HeroDao {
     //UPDATES THE HERO DETAILS TO INCLUDE THE SQUAD MEMBERSHIP
     public static void updateMembership (String heroName, String squad) {
         try(Connection db = Database.getConnect().open()){
-            String heroUpdate = "UPDATE heroes SET squad = (:squad) WHERE heroName = (:heroName)";
+            String heroUpdate = "UPDATE heroes SET squad = :squad WHERE heroName = :heroName AND deleted = false";
             db.createQuery(heroUpdate).addParameter("heroName", heroName).addParameter("squad", squad).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
@@ -86,7 +85,7 @@ public class HeroDao {
     public static List<Hero> membership (String squad) {
         List<Hero> allHeroes = null;
         try(Connection db = Database.getConnect().open()){
-            String heroList = "SELECT * FROM heroes WHERE squad IS NULL OR squad <> (:squad);";
+            String heroList = "SELECT * FROM heroes WHERE (squad IS NULL OR squad <> :squad) AND deleted = false;";
             allHeroes = db.createQuery(heroList).addParameter("squad", squad).executeAndFetch(Hero.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());

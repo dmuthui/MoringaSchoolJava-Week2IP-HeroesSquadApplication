@@ -31,4 +31,20 @@ function validateForm() {
       }
       return true; // Allow form submission
   }
-
+//AN ALERT THAT POPS TO ALLOW REMOVAL OF A HERO FROM THE ASSIGNED SQUAD
+    function confirmRemoval(heroName) {
+        var confirmation = confirm("Are you sure you want to remove the hero " + heroName + "?");
+        if (confirmation) {
+            // Proceed with the removal logic or redirect to the removal URL
+        } else {
+            // Cancel the removal action
+        }
+    }
+//AN ALERT THAT POPS WHEN YOU WANT TO DELETE A HERO FROM THE HEROES LIST
+    function confirmDeletion(heroName) {
+         var result = confirm("Are you sure you want to delete the hero " + heroName + "?");
+         if (result) {
+             // Perform the deletion action
+             window.location.href = "/delete-hero/" + heroName;
+         }
+     }
