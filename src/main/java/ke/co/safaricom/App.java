@@ -170,5 +170,15 @@ public class App {
             return new ModelAndView(model, "squads.hbs");
         }, engine);
 
+        //CREATES A PAGE WITH SEARCHABLE TABLE LIST OF ALL HEROES AND SQUADS
+        get("/combinedPages", (req,res) -> {
+
+            Map<String, Object> mixedList = new HashMap<>();
+            mixedList.put("heroes", HeroDao.getAllHeroes());
+            mixedList.put("squads", SquadDao.getAllSquads());
+            return new ModelAndView(mixedList, "combinedPages.hbs");
+
+        }, engine);
+
     }
 }

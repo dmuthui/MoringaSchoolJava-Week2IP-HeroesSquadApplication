@@ -1,0 +1,88 @@
+{{#partial "content"}}
+    <div class="jumbotron text-center Black">
+        <h2 class="h2-reponsive center text-info animated wobble">
+            <strong>WELCOME TO SEARCH PAGE<i class="fas fa-users animate rotateIn infinite"></i></strong>
+        </h2>
+    </div>
+    <head>
+        <title>Hero and Squad Search</title>
+    </head>
+    <body>
+    <div class="container">
+        <div class="search-container">
+            <h1>Heroes and Squad Summary Display</h1>
+            <a type="submit" class="btn fancy-button btn-lg" href="/">
+                <strong>HOME PAGE</strong>
+                <span class="sr-only">(current)</span>
+            </a>
+        </div>
+        <div class="col-5">
+            {{#if heroes}}
+                <legend class="text-center text-light">LIST OF HEROES</legend>
+                <table class="hero-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">HERO NAME</th>
+                        <th scope="col" class="text-center">AGE</th>
+                        <th scope="col">SPECIALPOWER</th>
+                        <th scope="col">WEAKNESS</th>
+                        <th scope="col">SQUAD</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each heroes}}
+                        <tr>
+                            <td>{{heroName}}</td>
+                            <td>{{age}} Years Old</td>
+                            <td>{{specialPower}}</td>
+                            <td>{{weakness}}</td>
+                            <td>{{squad}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+                <div class="no-data">You currently have no Heroes.<br>Consider adding some using the button below!</div>
+                <a href="/hero-list" class="btn btn-primary">
+                    <strong>ADD / VIEW HEROES' LIST</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+            {{/if}}
+        </div>
+        <div class="col-5">
+            {{#if squads}}
+                <legend class="text-center text-light">SQUADS LIST</legend>
+                <table class="squad-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">SQUAD</th>
+                        <th scope="col">SIZE</th>
+                        <th scope="col">CAUSE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each squads}}
+                        <tr>
+                            <td>{{squad}}</td>
+                            <td>{{size}} is the Max Size</td>
+                            <td>{{cause}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+                <div class="no-data">You currently have no Squads.<br>Consider adding some using the button below!</div>
+                <a href="/squad-list" class="btn btn-primary">
+                    <strong>ADD / VIEW SQUADS' LIST</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="back-link">
+        <a href="/home" class="btn btn-link">Back Home</a>
+    </div>
+    </body>
+</div>
+{{/partial}}
+{{>layout.hbs}}

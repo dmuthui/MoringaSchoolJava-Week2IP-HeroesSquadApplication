@@ -48,3 +48,4 @@ function validateForm() {
              window.location.href = "/delete-hero/" + heroName;
          }
      }
+
