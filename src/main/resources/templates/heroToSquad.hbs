@@ -1,5 +1,5 @@
 {{#partial "title"}}
-    Hero To Squad Page
+    Assigned Hero To Squad Page
 {{/partial}}
 {{#partial "content"}}
     <div class="viewer" style="background-image: url('https://wallpapertag.com/wallpaper/full/b/a/2/784583-gorgerous-marvel-heroes-wallpapers-2560x1600.jpg'); background-repeat: no-repeat; background-size: cover; background-position: cover;">
@@ -14,43 +14,39 @@
             </div>
             <div class="centre">
                 {{#each squads}}
-                    <table class="table table-striped table-dark">
-                        <thead>
+                    <table class="table table-bordered text-light grey">
+                        <thead class="thead-Royal blue">
                         <tr>
-                            <th class="text-info">Squad</th>
-                            <th class="text-info">Max Size</th>
-                            <th class="text-info">Cause</th>
-                            <th></th>
+                            <th class="text-info text-black"><strong>SQUAD</strong></th>
+                            <th class="text-info text-black"><strong>MAX SIZE</strong></th>
+                            <th class="text-info text-black"><strong>CAUSE</strong></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{squad}}</td>
-                            <td>{{size}} is the max size</td>
-                            <td>{{cause}}</td>
-                            <td></td>
+                            <td class="text-info text-black"><strong>{{squad}}</strong></td>
+                            <td class="text-info text-black"><strong>{{size}}</strong> is the max size</td>
+                            <td class="text-info text-black"><strong>{{cause}}</strong></td>
                         </tr>
-                        <tr>
-                            <td colspan="4">
-                                <table class="table table-striped table-dark">
-                                    <thead>
+                        <table class="table-bordered text-light grey">
+                                    <thead class="thead-Royal blue">
                                     <tr>
-                                        <th class="text-info">Hero Name</th>
-                                        <th class="text-info">Age</th>
-                                        <th class="text-info">Special Power</th>
-                                        <th class="text-info">Weakness</th>
-                                        <th class="text-info">Squad</th>
+                                        <th class="text-info text-black"><strong>HERO NAME</strong></th>
+                                        <th class="text-info text-black"><strong>AGE</strong></th>
+                                        <th class="text-info text-black"><strong>SPECIAL POWERS</strong></th>
+                                        <th class="text-info text-black"><strong>WEAKNESS</strong></th>
+                                        <th class="text-info text-black"><strong>SQUAD</strong></th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {{#each assignedHeroes}}
                                         <tr>
-                                            <td>{{heroName}}</td>
-                                            <td>{{age}} years old</td>
-                                            <td>{{specialPower}}</td>
-                                            <td>{{weakness}}</td>
-                                            <td>{{squad}}</td>
+                                            <td class="text-info text-black"><strong>{{heroName}}</strong></td>
+                                            <td class="text-info text-black"><strong>{{age}}</strong> years old</td>
+                                            <td class="text-info text-black"><strong>{{specialPower}}</strong></td>
+                                            <td class="text-info text-black"><strong>{{weakness}}</strong></td>
+                                            <td class="text-info text-black"><strong>{{squad}}</strong></td>
                                             <td>
                                                 <div>
                                                     <a class="btn btn-danger" href="/remove-hero/{{ heroName }}" title="remove hero" onclick="confirmRemoval('{{ heroName }}')">
@@ -62,8 +58,6 @@
                                     {{/each}}
                                     </tbody>
                                 </table>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
                 {{/each}}

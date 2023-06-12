@@ -1,33 +1,47 @@
 {{#partial "title"}}
-    HeroList Page
+    Heroes List Page
 {{/partial}}
 {{#partial "content"}}
-    <div class="viewer" style="background-image:url('https://images7.alphacoders.com/699/699169.jpg'); background-repeat: no-repeat; background-size: cover; background-position: cover;">
+    <div class="viewer" style="background-image: url('https://images7.alphacoders.com/699/699169.jpg'); background-repeat: no-repeat; background-size: cover; background-position: cover;">
         <div class="jumbotron text-center">
-            <h2 class="h2-reponsive center text-info animated wobble "><strong>HEROES LIST PAGE! <i class="fas fa-users animate rotateIn infinite"></i></strong></h2>
+            <h2 class="h2-reponsive center text-info animated wobble">
+                <strong>HEROES LIST PAGE! <i class="fas fa-users animate rotateIn infinite"></i></strong>
+            </h2>
             <ul>
-                <a type="submit" class="btn aqua-gradient text-white" href="/heroes"><strong>Add HEROES</strong></a>
-                <a type="submit" class="btn aqua-gradient text-white" href="/"><strong>HOME PAGE</strong></a>
+                <a type="submit" class="btn fancy-button btn-lg" href="/heroes"><strong>ADD HEROES</strong></a>
+                <a type="submit" class="btn fancy-button btn-lg" href="/"><strong>HOME PAGE</strong></a>
             </ul>
             {{#if heroes}}
                 <ul class="list-group">
-                    {{#each heroes}}
-                        <li class="list-group-item">
-                            <ul class="list-group">
-                                <li class="list-group-item"><strong>Name: {{heroName}}</strong></li>
-                                <li class="list-group-item"><strong>Age:</strong> <span>{{age}}-years old</span></li>
-                                <li class="list-group-item"><strong>Powers:</strong> {{specialPower}}</li>
-                                <li class="list-group-item"><strong>Weaknesses:</strong> {{weakness}}</li>
-                            </ul>
-                            {{!--                            <!-- Button to delete the hero -->--}}
-                            <a class="btn aqua-gradient text-white" title="delete {{heroName}}" type="button" href="/delete-hero/{{heroName}}" onclick="confirmDeletion('{{heroName}}')">
-                                <strong>Delete</strong>
-                            </a>
-                        </li>
-                    {{/each}}
+                    <table class="table table-bordered table-text light grey">
+                        <thead class="thead-Royal blue">
+                        <tr>
+                            <th><strong>HERO NAME</strong></th>
+                            <th><strong>AGE</strong></th>
+                            <th><strong>SPECIAL POWERS</strong></th>
+                            <th><strong>WEAKNESS</strong></th>
+                            <th><strong>DELETE FUNCTION</strong></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each heroes}}
+                            <tr>
+                                <td><strong>{{heroName}}</strong></td>
+                                <td><strong>{{age}}-years old</strong></td>
+                                <td><strong>{{specialPower}}</strong></td>
+                                <td><strong>{{weakness}}</strong></td>
+                                <td>
+                                    <a class="btn aqua-gradient text-white" title="delete {{heroName}}" type="button" href="/delete-hero/{{heroName}}" onclick="confirmDeletion('{{heroName}}')">
+                                        <strong>Delete</strong>
+                                    </a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
                 </ul>
             {{else}}
-                <h4 class="h4-reponsive text-info animate fadeIn"><strong>No Hero Added!</strong></h4>
+                <div class="no-data">You currently have no heroes. Consider adding some using the button above!</div>
             {{/if}}
         </div>
     </div>

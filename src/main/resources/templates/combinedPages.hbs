@@ -1,51 +1,55 @@
+{{#partial "title"}}
+    Heroes and Squads Summary Page
+{{/partial}}
 {{#partial "content"}}
-    <div class="jumbotron text-center Black">
-        <h2 class="h2-reponsive center text-info animated wobble">
-            <strong>WELCOME TO SEARCH PAGE<i class="fas fa-users animate rotateIn infinite"></i></strong>
+    <div class="viewer" style="background-image: url('https://images7.alphacoders.com/699/699169.jpg'); background-repeat: no-repeat; background-size: cover; background-position: cover;">
+    <div class="jumbotron text-center Royal blue">
+        <h2 class="h2-reponsive center text-info text-dark animated wobble">
+            <strong>WELCOME TO THE SUMMARY PAGE<i class="fas fa-users animate rotateIn infinite"></i></strong>
         </h2>
     </div>
     <head>
-        <title>Hero and Squad Search</title>
+        <title>HEROES AND SQUADS SUMMARY PAGE</title>
     </head>
     <body>
     <div class="container">
-        <div class="search-container">
-            <h1>Heroes and Squad Summary Display</h1>
+        <div class="combinedPage-container">
+            <h1><strong>HEROES AND SQUADS SUMMARY PAGE</strong></h1>
             <a type="submit" class="btn fancy-button btn-lg" href="/">
                 <strong>HOME PAGE</strong>
                 <span class="sr-only">(current)</span>
             </a>
-            <a href="/hero-list" class="btn btn-lg btn-primary fancy-button">
+            <a href="/hero-list" class="btn fancy-button btn-lg">
                 <strong>HEROES: => ADD / VIEW HEROES</strong>
                 <span class="sr-only">(current)</span>
             </a>
 
-            <a href="/squad-list" class="btn btn-lg btn-primary fancy-button">
+            <a href="/squad-list" class="btn fancy-button btn-lg">
                 <strong>SQUADS: => ADD / VIEW / ASSIGN HEROES / VIEW ASSIGNED</strong>
                 <span class="sr-only">(current)</span>
             </a>
         </div>
         <div class="col-5">
             {{#if heroes}}
-                <legend class="text-center text-light">LIST OF HEROES</legend>
-                <table class="hero-table">
-                    <thead>
+                <legend class="text-center text-dark"><strong>LIST OF HEROES</strong></legend>
+                <table class="table table-bordered table-text light grey">
+                    <thead class="thead-Royal blue">
                     <tr>
-                        <th scope="col">HERO NAME</th>
-                        <th scope="col" class="text-center">AGE</th>
-                        <th scope="col">SPECIALPOWER</th>
-                        <th scope="col">WEAKNESS</th>
-                        <th scope="col">SQUAD</th>
+                        <th scope="col"><strong>HERO NAME</strong></th>
+                        <th scope="col" class="text-center"><strong>AGE</strong></th>
+                        <th scope="col"><strong>SPECIALPOWER</strong></th>
+                        <th scope="col"><strong>WEAKNESS</strong></th>
+                        <th scope="col"><strong>SQUAD</strong></th>
                     </tr>
                     </thead>
                     <tbody>
                     {{#each heroes}}
                         <tr>
-                            <td>{{heroName}}</td>
-                            <td>{{age}} Years Old</td>
-                            <td>{{specialPower}}</td>
-                            <td>{{weakness}}</td>
-                            <td>{{squad}}</td>
+                            <td><strong>{{heroName}}</strong></td>
+                            <td><strong>{{age}}-years old</strong></td>
+                            <td><strong>{{specialPower}}</strong></td>
+                            <td><strong>{{weakness}}</strong></td>
+                            <td><strong>{{squad}}</strong></td>
                         </tr>
                     {{/each}}
                     </tbody>
@@ -60,21 +64,21 @@
         </div>
         <div class="col-5">
             {{#if squads}}
-                <legend class="text-center text-light">SQUADS LIST</legend>
-                <table class="squad-table">
-                    <thead>
+                <legend class="text-center text-dark"><strong>SQUADS LIST</strong></legend>
+                <table class="table table-bordered table-text light grey">
+                    <thead class="thead-Royal blue">
                     <tr>
-                        <th scope="col">SQUAD</th>
-                        <th scope="col">SIZE</th>
-                        <th scope="col">CAUSE</th>
+                        <th scope="col"><strong>SQUAD</strong></th>
+                        <th scope="col"><strong>SIZE</strong></th>
+                        <th scope="col"><strong>CAUSE</strong></th>
                     </tr>
                     </thead>
                     <tbody>
                     {{#each squads}}
                         <tr>
-                            <td>{{squad}}</td>
-                            <td>{{size}} is the Max Size</td>
-                            <td>{{cause}}</td>
+                            <td><strong>{{squad}}</strong></td>
+                            <td><strong>{{cause}}</strong></td>
+                            <td><strong>{{size}} is the max number of heroes</strong></td>
                         </tr>
                     {{/each}}
                     </tbody>
@@ -88,10 +92,7 @@
             {{/if}}
         </div>
     </div>
-    <div class="back-link">
-        <a href="/home" class="btn btn-link">Back Home</a>
-    </div>
     </body>
-    </div>
+</div>
 {{/partial}}
 {{>layout.hbs}}

@@ -152,28 +152,11 @@ h5 {
             align-items: flex-start;
         }
 
-        .search-container {
+        .combinedPage-container {
             width: 100%;
             text-align: center;
+            margin-top: 5px;
             margin-bottom: 30px;
-        }
-
-        .search-container input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .search-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
 
         .hero-table, .squad-table {
