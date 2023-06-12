@@ -1,0 +1,115 @@
+{{#partial "title"}}
+    About the App Page
+{{/partial}}
+Copy code
+{{#partial "content"}}
+    <div class="content" style="background-color: lightgrey;background-size: cover; background-position: cover;">
+        <div  class="jumbotron text-center Royal blue"><h2><strong>WELCOME TO THE ABOUT THE APP PAGE<i class="fas fa-users animate rotateIn infinite"></i></strong></h2></div>
+        <div style="text-align: center;">
+            <ul>
+                <a type="submit" class="btn aqua-gradient text-white" href="/"><strong>HOME PAGE</strong></a>
+
+                <a href="/hero-list" class="btn aqua-gradient text-white">
+                    <strong>HEROES: => ADD / VIEW HEROES</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+
+                <a href="/squad-list" class="btn aqua-gradient text-white">
+                    <strong>SQUADS: => ADD / VIEW / ASSIGN HEROES / VIEW ASSIGNED</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+
+                <a href="/combinedPages" class="btn aqua-gradient text-white">
+                    <strong>HEROES / SQUADS SUMMARY PAGE</strong>
+                    <span class="sr-only">(current)</span>
+                </a>
+            </ul>
+            <h3>About the Heroes Squad App</h3>
+            <p>
+                It is an app that allows you to recruit a well-balanced team of superheroes (or any other character-type of your choosing). Create a Hero object: At the very least, they should have a name, age, special power, and weakness. Special powers and weaknesses could be freely assignable, or you may offer users a pre-determined set to choose from.
+            </p>
+            <p>
+                Create a Squad object: They should have a max size, name, and a cause they are dedicated to fighting (sexism, computer illiteracy, not covering your mouth when you sneeze, hogging bus seats with your backpack, passive-aggressive post-it notes, etc.). Allow users to assign Heroes to a Squad. Each hero can only participate in one Squad at a time. You could even calculate scores for a specific skill area for your squad (defense, distance attacks, etc), or begin to integrate a turn-based battle system. Get creative! This could be the start of a fun portfolio piece!
+            </p>
+
+            <h3>Behavior-Driven Development (BDD)</h3>
+            <p>
+                The application allows users to do the following:
+            </p>
+            <ul style="display: inline-block; text-align: left;">
+                <li>Add a new hero in the squad: They should have a name, age, special power, and weakness.</li>
+                <li>View the heroes list.</li>
+                <li>Delete a created hero.</li>
+                <li>Add a new squad: Should have a max size, Squad name, and a cause they are dedicated to.</li>
+                <li>View a list of current squads.</li>
+                <li>Delete a squad.</li>
+                <li>Assign a hero to a squad without exceeding the maximum size.</li>
+                <li>Search for a Hero or a Squad that is already in the database.</li>
+            </ul>
+
+            <h3>Steps for the Problem</h3>
+            <ol style="display: inline-block; text-align: left;">
+                <li>As always, follow the "Red, Green, Refactor" workflow. You should always write a test before implementing a new behavior. Keep this lesson open as you code, and follow along with the workflow as you develop the program.</li>
+                <li>Create a test file to test the functionality of the HeroSquad.</li>
+                <li>In the test file (HeroTest Files & SquadTest Files), test if the entered input is appropriate (only strings) and throws appropriate exceptions. Also, verify that the output is correct given the input.</li>
+                <li>Implement the Hero and Squad Class files, testing their attributes and ensuring proper functionality.</li>
+                <li>Create a Hero object class that takes an input and adds it to the Squad of your choice.</li>
+                <li>Create a Squad object class that takes an input and adds it to the Squad of your choice.</li>
+                <li>Create attributes to hold the Heroes' (name, age, special power, and weakness) and Squad's inputs (max size, name, and cause).</li>
+            </ol>
+
+            <h3>Expected Output</h3>
+            <p>
+                Eventually, an app that allows you to recruit a well-balanced team of superheroes.
+            </p>
+            <ul style="display: inline-block; text-align: left;">
+                <li>A hero/heroes should have a name, age, special power, and weakness. Special powers and weaknesses could be freely assignable, or you may offer users a pre-determined set to choose from.</li>
+                <li>A Squad should have a max size, name, and a cause they are dedicated to fighting.</li>
+                <li>Allow users to assign a Hero to a Squad. Each hero can only participate in one Squad at a time.</li>
+                <li>Calculate scores for a specific skill area for your squad (defense, distance attacks, etc), or begin to integrate a turn-based battle system.</li>
+            </ul>
+
+            <h3>Setup/Installation Requirements</h3>
+            <ol style="display: inline-block; text-align: left;">
+                <li>Run the code</li>
+                <li>Add a new hero to the squad: They should have a name, age, special power, and weakness.</li>
+                <li>Add a new squad: Should have a max size, name, and a cause they are dedicated to fighting.</li>
+                <li>View a list of current squads.</li>
+                <li>View a list of heroes in a squad.</li>
+                <li>Assign a Hero to a Squad. Each hero can only participate in one Squad at a time.</li>
+                <li>Calculate scores for a specific skill area for your squad (defense, distance attacks, etc), or begin to integrate a turn-based battle system.</li>
+                <li>Get your output</li>
+            </ol>
+
+            <p>To access the code for learning, follow these steps:</p>
+            <ol style="display: inline-block; text-align: left;">
+                <li>Clone the repository: <code>git clone https://github.com/dmuthui/MoringaSchoolJava-Week2IP-HeroesSquadApplication.git</code></li>
+                <li>Open the cloned code on IntelliJ.</li>
+                <li>Run the code to view the output.</li>
+            </ol>
+
+            <h3>Technologies Used</h3>
+            <ul style="display: inline-block; text-align: left;">
+                <li>Written in Java (JDK 11.0.17).</li>
+                <li>Used Gradle 8.0.2 as a build tool, JVM: 11.0.17, and Groovy: 3.0.13.</li>
+                <li>Used SQL Shell (psql) - Postgres for the creation of the Database.</li>
+                <li>Used IntelliJ IDEA as the code editor for compiling and running the source code.</li>
+                <li>Other Dependencies include:
+                    <ul>
+                        <li>junit.jupiter</li>
+                        <li>Spark Core</li>
+                        <li>Template Handlebars</li>
+                        <li>simple: 2.0.7</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                <a href="https://github.com/dmuthui/MoringaSchoolJava-Week2IP-HeroesSquadApplication.git">GitHub URL Link</a>
+            </p>
+            <p>
+                &copy; 2023 Heroes Squad App @ David Muthui Ndungu
+            </p>
+        </div>
+    </div>
+{{/partial}}
+{{>layout.hbs}}

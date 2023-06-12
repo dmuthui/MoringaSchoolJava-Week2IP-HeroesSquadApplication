@@ -207,3 +207,28 @@ h5 {
             color: #777;
             text-decoration: none;
         }
+
+//STYLES FOR THE ABOUT US PAGE
+{{#partial "title"}}
+    <style>
+        .title {
+            text-align: center;
+        }
+    </style>
+    <div class="title">
+        About the App Page
+    </div>
+{{/partial}}
+{{#partial "content"}}
+    <style>
+        .content {
+            text-align: center;
+            background-color: white;
+            background-image: url('https://wallpapertag.com/wallpaper/full/b/a/2/784583-gorgerous-marvel-heroes-wallpapers-2560x1600.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: cover;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>

@@ -170,6 +170,11 @@ public class App {
             mixedList.put("squads", SquadDao.getAllSquads());
             return new ModelAndView(mixedList, "combinedPages.hbs");
         }, engine);
+        //CREATES AN ABOUT PAGE OF HOW THE APPLICATION WORKS
+        get("/aboutPage", (req,res) -> {
+            Map<String, Object> mixedList = new HashMap<>();
+            return new ModelAndView(mixedList, "aboutPage.hbs");
+        }, engine);
 
     }
 }
