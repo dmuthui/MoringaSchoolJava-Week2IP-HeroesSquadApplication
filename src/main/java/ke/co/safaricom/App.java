@@ -73,14 +73,7 @@ public class App {
             return null;
         }, engine);
 
-        // DEFINES THE ROUTE FOR DELETING A HERO FROM THE VIEW ASSIGNED HERO TO SQUAD
-        post("/delete-hero/:heroName", (req, res) -> {
-            String heroName = req.params("heroName");
-            HeroDao.deleteHero(heroName);
-            res.redirect("/hero-to-squad");
-            return null;
-        });
-        //REMOVE A HERO FROM A SQUAD
+        //ROUTE TO REMOVE A HERO FROM A SQUAD WITHOUT DELETING FROM THE VIEW ASSIGNED HERO TO SQUAD
         get("/remove-hero/:heroName", (req, res) -> {
             String heroName = req.params(":heroName");
             HeroDao.removeHero(heroName);
@@ -170,14 +163,12 @@ public class App {
             return new ModelAndView(model, "squads.hbs");
         }, engine);
 
-        //CREATES A PAGE WITH SEARCHABLE TABLE LIST OF ALL HEROES AND SQUADS
+        //CREATES A PAGE WITH A SUMMARY OF ALL HEROES AND SQUADS
         get("/combinedPages", (req,res) -> {
-
             Map<String, Object> mixedList = new HashMap<>();
             mixedList.put("heroes", HeroDao.getAllHeroes());
             mixedList.put("squads", SquadDao.getAllSquads());
             return new ModelAndView(mixedList, "combinedPages.hbs");
-
         }, engine);
 
     }
