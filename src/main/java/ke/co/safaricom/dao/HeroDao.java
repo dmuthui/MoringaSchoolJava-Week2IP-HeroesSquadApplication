@@ -23,7 +23,7 @@ public class HeroDao {
     public static void addHero (Hero additionalHero) {
         try (Connection db = Database.getConnect().open()) {
             //Database action
-            String heroAdd = "INSERT INTO heroes (heroName, age, specialPower, weakness, deleted) VALUES (TRIM(:heroName), :age, :specialPower, :weakness, :deleted ='false');";
+            String heroAdd = "INSERT INTO heroes (heroName, age, specialPower, weakness, deleted) VALUES (UPPER(TRIM(:heroName)), :age, :specialPower, :weakness, false);";
             db.createQuery(heroAdd).bind(additionalHero).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());

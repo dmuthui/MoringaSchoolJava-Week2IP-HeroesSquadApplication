@@ -21,7 +21,7 @@ public class SquadDao {
     public static void addSquad(Squad addedSquad) {
         try (Connection db = Database.getConnect().open()) {
             //Database action
-            String squadAdd = "INSERT INTO squads (squad, size, cause) VALUES (:squad, :size, :cause);";
+            String squadAdd = "INSERT INTO squads (squad, size, cause)VALUES (UPPER(:squad), :size, :cause);";
             db.createQuery(squadAdd).bind(addedSquad).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
