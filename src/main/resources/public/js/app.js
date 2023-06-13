@@ -9,6 +9,7 @@ function validateForm() {
         alert("Please fill in all the fields before submitting the form.");
         return false; // Prevent form submission
     }
+
 }
 
 //VALIDATES SQUADFORM DATA ENTRY:SENDS ALERT WHEN THERE IS DUPLICATE SQUAD AND AVOIDS CLICKING BLANK FORM FOR SUBMISSION
@@ -19,10 +20,9 @@ function validateForm() {
      if (squad === "" || size === "" || cause === "") {
      alert("Please fill in all the fields before submitting the form.");
      return false; // Prevent form submission
-      }
-       return true; // Allow form submission
   }
-//VALIDATES SQUADHEROES FORM DATA ENTRY:TO AVOID SUBMITTING THE FORM WHEN HERO HAS NOT BEEN SELECTED FOR SUBMISSION
+
+//VALIDATES SQUADHEROES FORM DATA ENTRY:TO AVOID SUBMITTING AN EMPTY FORM WHEN HERO HAS NOT BEEN SELECTED FOR SUBMISSION
   function validator() {
       var heroName = document.getElementById("heroName").value;
       if (heroName === "") {
