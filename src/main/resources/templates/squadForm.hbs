@@ -11,16 +11,16 @@
                     <form action="/squads" method="post">
                         <div class="form-group md-form">
                             <label   class="active text-white" for="squad">Squad Name</label>
-                            <input id="squad" name="squad" type="text" class="form-control text-navy blue">
+                            <input id="squad" name="squad" type="text" class="form-control text-navy blue" required>
                         </div>
                         <div class="form-group md-form">
                             <label  class="active text-white" for="size">Squad size</label>
-                            <input id="size" name="size" type="number" class="form-control text-navy blue">
+                            <input id="size" name="size" type="number" class="form-control text-navy blue" required>
                         </div>
 
                         <div class="form-group md-form">
                             <label  class="active text-white" for="cause">Squad cause</label>
-                            <input id="cause" name="cause" type="text" class="form-control text-navy blue">
+                            <input id="cause" name="cause" type="text" class="form-control text-navy blue" required>
                         </div>
 
                         <button type="submit" class="btn aqua-gradient text-white" onclick="return validatesForm()" >ADD SQUAD</button>

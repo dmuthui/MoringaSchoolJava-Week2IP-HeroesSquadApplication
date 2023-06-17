@@ -14,7 +14,7 @@
                         <input id="squad" name="squad" class="form-control text-royal blue" type="text" value="{{querySquadName}}" required placeholder="squad">
                     </div>
                     <div class="form-group md-form">
-                        <select class="form-select" id="heroName" name="heroName" placeholder="heroName">
+                        <select class="form-select" id="heroName" name="heroName" placeholder="heroName" required>
                             <option selected></option>
                             {{#each heroNameObject}}
                                 <option value="{{heroName}}">{{heroName}} ({{age}}-years Old, {{specialPower}})</option>

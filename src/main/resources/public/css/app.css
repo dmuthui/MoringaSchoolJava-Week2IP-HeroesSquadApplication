@@ -38,7 +38,7 @@ html,
 body,
 header,
 .view {
-  height: 88%;
+  height: 91%;
   width: 100%;
   font-weight: bold;
   font-size:10px;
@@ -117,7 +117,7 @@ h5 {
  height: 105%;
 }
 .viewer{
- height: 400%;
+ height: 280%;
 }
 .show{
      height: 130%;
@@ -160,7 +160,7 @@ h5 {
         }
 
         .hero-table, .squad-table {
-            width: 100%;
+            width: 40%;
             margin-bottom: 30px;
         }
 

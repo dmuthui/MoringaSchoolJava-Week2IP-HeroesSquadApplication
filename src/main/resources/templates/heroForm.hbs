@@ -10,21 +10,21 @@
                 <form action="/heroes" method="post">
                     <div class="form-group md-form">
                         <label class="active text-white"  for="heroName"><strong>Hero's Name</strong></label>
-                        <input id="heroName" name="heroName" class="form-control text-navy blue" type="text">
+                        <input id="heroName" name="heroName" class="form-control text-navy blue" type="text" required>
                     </div>
 
                     <div class="form-group md-form">
                         <label class="active text-white"  for="age"> <strong>Hero's Age</strong> </label>
-                        <input id="age" name="age" class="form-control text-navy blue" type="number">
+                        <input id="age" name="age" class="form-control text-navy blue" type="number" required>
                     </div>
 
                     <div class="form-group md-form">
                         <label class="active text-white"  for="specialPower"><strong>Hero's Special Power</strong></label>
-                        <input id="specialPower" name="specialPower" class="form-control text-navy blue" type="text">
+                        <input id="specialPower" name="specialPower" class="form-control text-navy blue" type="text" required>
                     </div>
 
                     <div class="form-group md-form">
-                        <label class="active text-white"  for="weakness"><strong>Hero's Weakness</strong></label><input id="weakness" name="weakness" class="form-control text-navy blue" type="text">
+                        <label class="active text-white"  for="weakness"><strong>Hero's Weakness</strong></label><input id="weakness" name="weakness" class="form-control text-navy blue" type="text" required>
                     </div>
                     <ul>
                        <button type="submit" onclick="return validateForm()" class="btn aqua-gradient text-white">Add hero</button>
