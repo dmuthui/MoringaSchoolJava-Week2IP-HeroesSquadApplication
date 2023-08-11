@@ -3,7 +3,7 @@ import org.sql2o.Sql2o;
 
 public class Database {
     private static final Sql2o connect = new Sql2o(
-            "jdbc:postgresql://localhost:5432/postgres",
+            "jdbc:postgresql://localhost:5432/heroes_squads",
             "postgres",
             "22709689"
     );
